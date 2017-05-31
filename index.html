@@ -8,8 +8,50 @@
   <meta name="description" content="MusEDLab Creative App Prompts">
   <meta name="author" content="NYU Music Experience Design Lab">
 
-  <link rel="stylesheet" href="styles.css?v=1.0">
+  <style>
+	  /* entire container, keeps perspective */
+.flip-container {
+	perspective: 340px;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
 
+.flip-container, .front, .back {
+	width: 200px;
+	height: 300px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+	</style>
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
