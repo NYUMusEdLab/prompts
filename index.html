@@ -8,36 +8,81 @@
   <meta name="description" content="MusEDLab Creative App Prompts">
   <meta name="author" content="NYU Music Experience Design Lab">
 
-  <link rel="stylesheet" href="styles.css?v=1.0">
+  <style>
+	  /* entire container, keeps perspective */
+.flip-container {
+	perspective: 340px;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
 
+.flip-container, .front, .back {
+	width: 200px;
+	height: 300px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+	</style>
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
 </head>
 
 <body>
-  <script src="js/scripts.js"></script>
-  
   <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 	<div class="flipper">
-		<div class="front">
-			Front 1
+		<div class="front" style="background: url(dwflip.jpg) 0 0 no-repeat;">
+			<span class="name">GroovePizza</span>
 		</div>
-		<div class="back">
-			Back 1
+		<div class="back" style="background:#f8f8f8;">
+			<div class="back-logo"></div>
+			<div class="back-title">Geometry</div>
+			<p>Create a Groove using only lines and dots.</p>
 		</div>
 	</div>
-</div>
-
-<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+   </div>
+	<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 	<div class="flipper">
-		<div class="front">
-			Front 2
+		<div class="front" style="background: url(dwflip.jpg) 0 0 no-repeat;">
+			<span class="name">GroovePizza 2</span>
 		</div>
-		<div class="back">
-			Back 2
+		<div class="back" style="background:#f8f8f8;">
+			<div class="back-logo"></div>
+			<div class="back-title">Geometry 2</div>
+			<p>Create a Groove using only lines and dots.</p>
 		</div>
 	</div>
-</div>
+   </div>
+
+
 </body>
 </html>
